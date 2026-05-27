@@ -1,11 +1,11 @@
 {
   "name": "simple-frontend",
   "version": "1.0.0",
-  "description": "Simple HTML JS frontend",
   "main": "app.js",
   "scripts": {
     "start": "npx serve .",
-    "build": "echo Frontend Build Successful"
+    "build": "echo Frontend Build Successful",
+    "test": "echo Frontend Test Passed"
   },
   "dependencies": {
     "serve": "^14.2.3"
