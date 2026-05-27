@@ -1,0 +1,12 @@
+CREATE DATABASE devopsdb;
+
+\c devopsdb;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100),
+  role VARCHAR(100)
+);
+
+INSERT INTO users(name, role)
+VALUES ('Swati', 'DevOps Engineer');
