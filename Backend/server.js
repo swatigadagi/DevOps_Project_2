@@ -9,7 +9,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 8080;
 
-app.get("/api/hi", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.json({
     message: "Hi from Backend 🚀"
   });
