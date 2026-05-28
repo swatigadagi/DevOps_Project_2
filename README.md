@@ -232,3 +232,4 @@ CI/CD
 Linux
 PostgreSQL
 Node.js
+<img width="1910" height="967" alt="image" src="https://github.com/user-attachments/assets/038235c3-8c64-4231-b0f6-e9fcdbd665be" />
