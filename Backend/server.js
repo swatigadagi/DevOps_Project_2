@@ -20,7 +20,7 @@ const pool = new Pool({
   ssl: false
 });
 
-app.get("/", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.json({
     status: "success",
     message: "Backend is working",
