@@ -22,7 +22,8 @@ const pool = new Pool({
 
 app.get("/", (req, res) => {
   res.json({
-    status: "running",
+    status: "success",
+    message: "Backend is working",
     app: "node backend",
     port: PORT
   });
