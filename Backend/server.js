@@ -55,6 +55,12 @@ app.get("/api/v1/health/db", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.json({
+    status: "success",
+    message: "Backend is working"
+  });
+});
 app.get("/api/v1/users", async (req, res) => {
   try {
     const result = await pool.query(`
