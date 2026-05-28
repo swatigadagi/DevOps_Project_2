@@ -20,20 +20,23 @@ const pool = new Pool({
   ssl: false
 });
 
-app.get("/api/v1/health", (req, res) => {
-  res.json({
-    status: "success",
-    message: "Backend is working",
-    app: "node backend",
-    port: PORT
-  });
-});
+app.get("/api/v1/health", async (req, res) => {
+  try {
+    const db = await pool.query("SELECT NOW()");
 
-app.get("/api/v1/health", (req, res) => {
-  res.status(200).json({
-    status: "healthy",
-    message: "Backend is working"
-  });
+    res.status(200).json({
+      status: "healthy",
+      message: "Backend and PostgreSQL connected",
+      timestamp: db.rows[0].now
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      status: "failed",
+      message: "Database connection failed"
+    });
+  }
 });
 
 app.get("/api/v1/health/db", async (req, res) => {
@@ -61,6 +64,7 @@ app.get("/", (req, res) => {
     message: "Backend is working"
   });
 });
+
 app.get("/api/v1/users", async (req, res) => {
   try {
     const result = await pool.query(`
