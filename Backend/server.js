@@ -20,6 +20,15 @@ const pool = new Pool({
   ssl: false
 });
 
+app.get("/", (req, res) => {
+  res.json({
+    status: "success",
+    message: "Backend is working",
+    app: "node backend",
+    port: PORT
+  });
+});
+
 app.get("/api/v1/health", async (req, res) => {
   try {
     const db = await pool.query("SELECT NOW()");
@@ -58,26 +67,16 @@ app.get("/api/v1/health/db", async (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
-  res.json({
-    status: "success",
-    message: "Backend is working"
-  });
-});
-
 app.get("/api/v1/users", async (req, res) => {
   try {
-    const result = await pool.query(`
-      SELECT 
-        1 as id,
-        'Swati' as name,
-        'DevOps Engineer' as role
-    `);
+    const result = await pool.query("SELECT * FROM users");
 
     res.json({
       users: result.rows
     });
   } catch (error) {
+    console.error(error);
+
     res.status(500).json({
       error: "unable to fetch users"
     });
