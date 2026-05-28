@@ -29,7 +29,7 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-app.get("/api/health", async (req, res) => {
+app.get("/api/v1/health", async (req, res) => {
   try {
     const db = await pool.query("SELECT NOW()");
 
@@ -48,7 +48,7 @@ app.get("/api/health", async (req, res) => {
   }
 });
 
-app.get("/api/users", async (req, res) => {
+app.get("/api/v1/users", async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT 
