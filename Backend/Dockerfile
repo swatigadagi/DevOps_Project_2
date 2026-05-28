@@ -11,8 +11,7 @@ COPY package*.json ./
 RUN npm install
 RUN npm install pg
 
-RUN curl -o /usr/src/app/global-bundle.pem \
-https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
+COPY global-bundle.pem /Backend/global-bundle.pem
 
 COPY . .
 
