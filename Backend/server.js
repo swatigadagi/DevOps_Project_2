@@ -29,6 +29,13 @@ app.get("/api/v1/health", (req, res) => {
   });
 });
 
+app.get("/api/v1/health", (req, res) => {
+  res.status(200).json({
+    status: "healthy",
+    message: "Backend is working"
+  });
+});
+
 app.get("/api/v1/health/db", async (req, res) => {
   try {
     const db = await pool.query("SELECT NOW()");
