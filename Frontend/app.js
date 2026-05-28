@@ -1,5 +1,5 @@
 const API_URL = "http://localhost:8080/api/health";
-
+const API_URL = process.env.API_URL;
 fetch(API_URL)
   .then(response => response.json())
   .then(data => {
