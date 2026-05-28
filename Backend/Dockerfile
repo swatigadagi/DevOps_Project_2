@@ -8,6 +8,7 @@ RUN curl -o /usr/src/app/global-bundle.pem https://truststore.pki.rds.amazonaws.
 COPY package*.json ./
 RUN npm install
 RUN npm install pg
+RUN apt-get update && apt-get install -y postgresql-client
 COPY . .
 RUN npm test
 EXPOSE 8080
