@@ -21,7 +21,7 @@ const pool = new Pool({
   ssl: {
     rejectUnauthorized: true,
     ca: fs.readFileSync("/usr/src/app/global-bundle.pem").toString(),
-  }
+  },
 });
 
 app.get("/", (req, res) => {
@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
     status: "success",
     message: "Backend is working",
     app: "node backend",
-    port: PORT
+    port: PORT,
   });
 });
 
@@ -40,14 +40,14 @@ app.get("/api/v1/health", async (req, res) => {
     res.status(200).json({
       status: "healthy",
       message: "Backend and PostgreSQL connected",
-      timestamp: db.rows[0].now
+      timestamp: db.rows[0].now,
     });
   } catch (error) {
     console.error(error);
 
     res.status(500).json({
       status: "failed",
-      message: "Database connection failed"
+      message: "Database connection failed",
     });
   }
 });
@@ -59,14 +59,14 @@ app.get("/api/v1/health/db", async (req, res) => {
     res.status(200).json({
       status: "healthy",
       message: "Backend and PostgreSQL connected",
-      timestamp: db.rows[0].now
+      timestamp: db.rows[0].now,
     });
   } catch (error) {
     console.error(error);
 
     res.status(500).json({
       status: "failed",
-      message: "Database connection failed"
+      message: "Database connection failed",
     });
   }
 });
@@ -76,13 +76,13 @@ app.get("/api/v1/users", async (req, res) => {
     const result = await pool.query("SELECT * FROM users");
 
     res.json({
-      users: result.rows
+      users: result.rows,
     });
   } catch (error) {
     console.error(error);
 
     res.status(500).json({
-      error: "unable to fetch users"
+      error: "unable to fetch users",
     });
   }
 });
