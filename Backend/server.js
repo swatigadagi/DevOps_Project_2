@@ -12,9 +12,6 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
 
-#const fs = require("fs");
-#const { Pool } = require("pg");
-
 const pool = new Pool({
   host: process.env.RDSHOST || process.env.DB_HOST,
   port: process.env.DB_PORT || 5432,
